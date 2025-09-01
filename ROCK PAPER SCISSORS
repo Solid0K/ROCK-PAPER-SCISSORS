@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Main {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        Random random=new Random();
+        String[] RPS={"rock","paper","scissors"};
+        String PlayerChoice;
+        String ComputerChoice;
+        String isContinue="yes";
+        System.out.println("ROCK PAPER SCISSORS!!!!");
+        while(isContinue.equals("yes")){
+            System.out.print("Enter your choice(Rock,Paper,Scissors):");
+            PlayerChoice=scanner.next().toLowerCase();
+            if(!PlayerChoice.equals("paper") && !PlayerChoice.equals("rock") && !PlayerChoice.equals("scissors")){
+                System.out.println("Invalid Choice");
+                continue;
+            }
+            ComputerChoice=RPS[random.nextInt(0,3)];
+            System.out.println("Computer Choice:"+ComputerChoice);
+            if(PlayerChoice.equals("paper") && ComputerChoice.equals("scissors") || PlayerChoice.equals("scissors") && ComputerChoice.equals("rock") || PlayerChoice.equals("rock") && ComputerChoice.equals("paper")){
+                System.out.println("OPPS YOU LOSE");
+            }
+            else if(PlayerChoice.equals(ComputerChoice)){
+                System.out.println("OH ITS A DRAW");
+            }
+            else{
+                System.out.println("WOW YOU WIN");
+            }
+            System.out.print("WANNA TRY AGAIN(yes/no):");
+            isContinue=scanner.next().toLowerCase();
+        }
+        System.out.println("OH OK");
+        scanner.close();
+    }
+}
